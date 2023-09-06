@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectTypeGuids>{BAA0C2D2-18E2-41B9-852F-F413020CAA33};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>KMIQ</RootNamespace>
+    <AssemblyName>KMIQ</AssemblyName>
+    <VSTO_HostDocumentName>New 다중지능검사 결과분석리포트.xlsx</VSTO_HostDocumentName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DefineConstants>VSTO40</DefineConstants>
+    <OfficeApplication>Excel</OfficeApplication>
+    <ProjectGuid>{C30CBB3C-CC7D-468B-BC80-B99FF70FBE32}</ProjectGuid>
+    <NuGetPackageImportStamp>38e1ec84</NuGetPackageImportStamp>
+    <AssemblyVersion>1.0.16250.706</AssemblyVersion>
+    <SolutionID>659D6419-EE2F-4C98-8BDE-E195A05C75EE</SolutionID>
+    <IsWebBootstrapper>True</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+    <VSTO_TrustAssembliesLocation>true</VSTO_TrustAssembliesLocation>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <PublishUrl>게시\</PublishUrl>
+    <InstallUrl>http://install.smartomr.com/smartreport/kmiq/</InstallUrl>
+    <TargetCulture>ko</TargetCulture>
+    <ApplicationVersion>1.0.18214.727</ApplicationVersion>
+    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateInterval>0</UpdateInterval>
+    <UpdateIntervalUnits>days</UpdateIntervalUnits>
+    <ProductName>다중지능검사 결과분석리포트</ProductName>
+    <PublisherName>RealSMART</PublisherName>
+    <SupportUrl>http://www.smartomr.com</SupportUrl>
+    <FriendlyName>New 다중지능검사 결과분석리포트</FriendlyName>
+    <OfficeApplicationDescription>New 다중지능검사 결과분석리포트</OfficeApplicationDescription>
+  </PropertyGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="RealSMART_USB_Authorize_Files">
+      <Visible>False</Visible>
+      <ProductName>RealSMART USB Authorize</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <PropertyGroup>
+    <VSTO_EmbedTypeLibraryInAssembly>false</VSTO_EmbedTypeLibraryInAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <!--
+    This section specifies references for the project.
+  -->
+  <ItemGroup>
+    <Reference Include="C1.C1Excel.4">
+      <HintPath>..\..\C1.C1Excel.4.dll</HintPath>
+    </Reference>
+    <Reference Include="DefaultResource">
+      <HintPath>..\..\DefaultResource.dll</HintPath>
+    </Reference>
+    <Reference Include="loAuthCheck">
+      <HintPath>..\..\loAuthCheck.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="VSTOInstaller">
+      <HintPath>..\..\VSTOInstaller.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cDataLoad.cs" />
+    <Compile Include="cMakeReport.cs" />
+    <Compile Include="Common\loComm\Common.cs" />
+    <Compile Include="Common\loComm\DBConn.cs" />
+    <Compile Include="Common\loComm\loFunctions.cs" />
+    <Compile Include="Common\loComm\Win32Window.cs" />
+    <Compile Include="cSaveReport.cs" />
+    <Compile Include="Form\AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AboutBox1.designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmPrint.xaml.cs">
+      <DependentUpon>frmPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmProgress.xaml.cs">
+      <DependentUpon>frmProgress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Form\OnlineDataManager.xaml.cs">
+      <DependentUpon>OnlineDataManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs" />
+    <Compile Include="Menu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P1.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P1.Designer.cs">
+      <DependentUpon>P1.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P2.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P2.Designer.cs">
+      <DependentUpon>P2.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P3.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P3.Designer.cs">
+      <DependentUpon>P3.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="P6.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P6.Designer.cs">
+      <DependentUpon>P6.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P7.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P7.Designer.cs">
+      <DependentUpon>P7.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P8.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P8.Designer.cs">
+      <DependentUpon>P8.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P9.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P9.Designer.cs">
+      <DependentUpon>P9.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P10.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P10.Designer.cs">
+      <DependentUpon>P10.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P11.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P11.Designer.cs">
+      <DependentUpon>P11.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P12.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P12.Designer.cs">
+      <DependentUpon>P12.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P4.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P4.Designer.cs">
+      <DependentUpon>P4.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P13.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P13.Designer.cs">
+      <DependentUpon>P13.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P14.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P14.Designer.cs">
+      <DependentUpon>P14.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P15.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P15.Designer.cs">
+      <DependentUpon>P15.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P16.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P16.Designer.cs">
+      <DependentUpon>P16.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P17.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P17.Designer.cs">
+      <DependentUpon>P17.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P5.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P5.Designer.cs">
+      <DependentUpon>P5.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P18.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P18.Designer.cs">
+      <DependentUpon>P18.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P19.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P19.Designer.cs">
+      <DependentUpon>P19.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P20.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P20.Designer.cs">
+      <DependentUpon>P20.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P21.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P21.Designer.cs">
+      <DependentUpon>P21.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P22.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P22.Designer.cs">
+      <DependentUpon>P22.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="P23.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="P23.Designer.cs">
+      <DependentUpon>P23.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="ThisWorkbook.cs">
+      <DependentUpon>New 다중지능검사 결과분석리포트.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="ThisWorkbook.Designer.cs">
+      <DependentUpon>ThisWorkbook.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="WebApi.cs" />
+    <None Include="P18.Designer.xml">
+      <DependentUpon>P18.cs</DependentUpon>
+    </None>
+    <None Include="P19.Designer.xml">
+      <DependentUpon>P19.cs</DependentUpon>
+    </None>
+    <None Include="P20.Designer.xml">
+      <DependentUpon>P20.cs</DependentUpon>
+    </None>
+    <None Include="P21.Designer.xml">
+      <DependentUpon>P21.cs</DependentUpon>
+    </None>
+    <None Include="P22.Designer.xml">
+      <DependentUpon>P22.cs</DependentUpon>
+    </None>
+    <None Include="P23.Designer.xml">
+      <DependentUpon>P23.cs</DependentUpon>
+    </None>
+    <Content Include="SystemFiles\B.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\I.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\L.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\N.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\P.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\Se.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\So.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\W.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\개인내지능.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\공간지능.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\논리수학지능.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\대인지능.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\신체운동지능.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\언어지능.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\음악지능.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SystemFiles\자연지능.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="P17.Designer.xml">
+      <DependentUpon>P17.cs</DependentUpon>
+    </None>
+    <None Include="P16.Designer.xml">
+      <DependentUpon>P16.cs</DependentUpon>
+    </None>
+    <None Include="P15.Designer.xml">
+      <DependentUpon>P15.cs</DependentUpon>
+    </None>
+    <None Include="P14.Designer.xml">
+      <DependentUpon>P14.cs</DependentUpon>
+    </None>
+    <None Include="P13.Designer.xml">
+      <DependentUpon>P13.cs</DependentUpon>
+    </None>
+    <None Include="P5.Designer.xml">
+      <DependentUpon>P5.cs</DependentUpon>
+    </None>
+    <None Include="P4.Designer.xml">
+      <DependentUpon>P4.cs</DependentUpon>
+    </None>
+    <None Include="P12.Designer.xml">
+      <DependentUpon>P12.cs</DependentUpon>
+    </None>
+    <None Include="P11.Designer.xml">
+      <DependentUpon>P11.cs</DependentUpon>
+    </None>
+    <None Include="P10.Designer.xml">
+      <DependentUpon>P10.cs</DependentUpon>
+    </None>
+    <None Include="P9.Designer.xml">
+      <DependentUpon>P9.cs</DependentUpon>
+    </None>
+    <None Include="P3.Designer.xml">
+      <DependentUpon>P3.cs</DependentUpon>
+    </None>
+    <None Include="P2.Designer.xml">
+      <DependentUpon>P2.cs</DependentUpon>
+    </None>
+    <None Include="P1.Designer.xml">
+      <DependentUpon>P1.cs</DependentUpon>
+    </None>
+    <None Include="Resources\SMARTOMR_Intro_w.png" />
+    <None Include="Resources\ip_icon_04_Info.ico" />
+    <None Include="P8.Designer.xml">
+      <DependentUpon>P8.cs</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Form\AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ThisWorkbook.resx">
+      <DependentUpon>ThisWorkbook.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="New 다중지능검사 결과분석리포트.xlsx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThisWorkbook.Designer.xml">
+      <DependentUpon>ThisWorkbook.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="P6.Designer.xml">
+      <DependentUpon>P6.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="P7.Designer.xml">
+      <DependentUpon>P7.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{B691E011-1797-432E-907A-4D8C69339129}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOR">
+      <Guid>{00000300-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attention_100.png" />
+    <None Include="Resources\action_refresh.gif" />
+    <Resource Include="Resources\bg.jpg" />
+    <Resource Include="Resources\print_logo.png" />
+    <Resource Include="Resources\print_title.png" />
+    <Resource Include="Resources\print_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Form\frmPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Form\frmProgress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Form\OnlineDataManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>702B9E3A3C3484BC37BC77CD1530BA82DEF6AA7A</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
+        <ProjectProperties HostName="New 다중지능검사 결과분석리포트.xlsx" HostPackage="{3F2B7691-D1D1-402F-9370-2704A737CF60}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="XLS" Language="CS" TemplatesPath="VSTOTemplates" DebugInfoExeName="C:\Program Files\Microsoft Office\root\Office16\excel.exe" DebugInfoCommandLine="/x &quot;[$OUTPUT]New 다중지능검사 결과분석리포트.xlsx&quot;" />
+        <Host Name="Excel Document" Path=".\New 다중지능검사 결과분석리포트.xlsx" GeneratedCodeNamespace="KMIQ" PublishedHash="55FF6F548DB475FDC498E09454EF2FC24EF82330">
+          <HostItem Name="P1" Code="P1.cs" CanonicalName="P1" PublishedHash="689ADB2A6ECD5F3C80C0B58064C52C25DC39CCCD" DisplayName="1P" Blueprint="P1.Designer.xml" GeneratedCode="P1.Designer.cs" />
+          <HostItem Name="Sheet7" Code="P10.cs" CanonicalName="Sheet7" PublishedHash="86DBC80D71943063FDF282D10654D04C208D5766" DisplayName="10P" Blueprint="P10.Designer.xml" GeneratedCode="P10.Designer.cs" />
+          <HostItem Name="Sheet8" Code="P11.cs" CanonicalName="Sheet8" PublishedHash="B16E0141D71B8AB80162979D00745188AEFC094F" DisplayName="11P" Blueprint="P11.Designer.xml" GeneratedCode="P11.Designer.cs" />
+          <HostItem Name="Sheet9" Code="P12.cs" CanonicalName="Sheet9" PublishedHash="F0EBD66C8166ADAFAEAA1462E6418EA7AC771B9F" DisplayName="12P" Blueprint="P12.Designer.xml" GeneratedCode="P12.Designer.cs" />
+          <HostItem Name="Sheet10" Code="P13.cs" CanonicalName="Sheet10" PublishedHash="34DDCAAD40D95D7BF8DE551534C5C21C05C46966" DisplayName="13P" Blueprint="P13.Designer.xml" GeneratedCode="P13.Designer.cs" />
+          <HostItem Name="Sheet11" Code="P14.cs" CanonicalName="Sheet11" PublishedHash="22E480CD098871D708AF9C27F1744C43DC7C624A" DisplayName="14P" Blueprint="P14.Designer.xml" GeneratedCode="P14.Designer.cs" />
+          <HostItem Name="Sheet12" Code="P15.cs" CanonicalName="Sheet12" PublishedHash="9B236FE4275482DFCC424815E1B15A5A2C21DF9D" DisplayName="15P" Blueprint="P15.Designer.xml" GeneratedCode="P15.Designer.cs" />
+          <HostItem Name="Sheet13" Code="P16.cs" CanonicalName="Sheet13" PublishedHash="72A839263C68C59957E75613A37355415FB28FD4" DisplayName="16P" Blueprint="P16.Designer.xml" GeneratedCode="P16.Designer.cs" />
+          <HostItem Name="Sheet14" Code="P17.cs" CanonicalName="Sheet14" PublishedHash="FC4BB20D0224A0161E89B2E5EA6CD04229C7AF73" DisplayName="17P" Blueprint="P17.Designer.xml" GeneratedCode="P17.Designer.cs" />
+          <HostItem Name="Sheet15" Code="P18.cs" CanonicalName="Sheet15" PublishedHash="0E744C776A63CC7DF3E3B21F0852F5B6DA503230" DisplayName="18P" Blueprint="P18.Designer.xml" GeneratedCode="P18.Designer.cs" />
+          <HostItem Name="Sheet16" Code="P19.cs" CanonicalName="Sheet16" PublishedHash="C4B15C212A04A0C89E2C09A8CB63C440B1B92154" DisplayName="19P" Blueprint="P19.Designer.xml" GeneratedCode="P19.Designer.cs" />
+          <HostItem Name="P2" Code="P2.cs" CanonicalName="P2" PublishedHash="4E5CB98150682CC8A9D0861C399C8698EFED7B36" DisplayName="2P" Blueprint="P2.Designer.xml" GeneratedCode="P2.Designer.cs" />
+          <HostItem Name="Sheet17" Code="P20.cs" CanonicalName="Sheet17" PublishedHash="CFCCCC7072D6BB37CF12CE424AA18062D134C778" DisplayName="20P" Blueprint="P20.Designer.xml" GeneratedCode="P20.Designer.cs" />
+          <HostItem Name="Sheet18" Code="P21.cs" CanonicalName="Sheet18" PublishedHash="A5B68896DFCB1E49A2D72D38F14EB71E928FCE5B" DisplayName="21P" Blueprint="P21.Designer.xml" GeneratedCode="P21.Designer.cs" />
+          <HostItem Name="Sheet19" Code="P22.cs" CanonicalName="Sheet19" PublishedHash="86F79BAD375C45DA306A2DB33BAE44BC92712CBC" DisplayName="22P" Blueprint="P22.Designer.xml" GeneratedCode="P22.Designer.cs" />
+          <HostItem Name="Sheet20" Code="P23.cs" CanonicalName="Sheet20" PublishedHash="6FC0FA11C32CB19F5A4CF855CC5871FD207287A9" DisplayName="23P" Blueprint="P23.Designer.xml" GeneratedCode="P23.Designer.cs" />
+          <HostItem Name="P3" Code="P3.cs" CanonicalName="P3" PublishedHash="873B0FD0E1431D25C808CC7C91271ABA4B605012" DisplayName="3P" Blueprint="P3.Designer.xml" GeneratedCode="P3.Designer.cs" />
+          <HostItem Name="Sheet1" Code="P4.cs" CanonicalName="Sheet1" PublishedHash="80008835716598AE31AE49864D20ED3363A983B7" DisplayName="4P" Blueprint="P4.Designer.xml" GeneratedCode="P4.Designer.cs" />
+          <HostItem Name="Sheet2" Code="P5.cs" CanonicalName="Sheet2" PublishedHash="CF3FF55B505EA0EC63529249DFDBA61423EB8529" DisplayName="5P" Blueprint="P5.Designer.xml" GeneratedCode="P5.Designer.cs" />
+          <HostItem Name="Sheet3" Code="P6.cs" CanonicalName="Sheet3" PublishedHash="7741EC0FB1A300AFFE06104A4D0B9456BA300573" DisplayName="6P" Blueprint="P6.Designer.xml" GeneratedCode="P6.Designer.cs" />
+          <HostItem Name="Sheet4" Code="P7.cs" CanonicalName="Sheet4" PublishedHash="5666FAEEB080DD7D7FC51E649B1058A07B887A59" DisplayName="7P" Blueprint="P7.Designer.xml" GeneratedCode="P7.Designer.cs" />
+          <HostItem Name="Sheet5" Code="P8.cs" CanonicalName="Sheet5" PublishedHash="A2E009F4B71B5219039B8877A956A6251E63C16E" DisplayName="8P" Blueprint="P8.Designer.xml" GeneratedCode="P8.Designer.cs" />
+          <HostItem Name="Sheet6" Code="P9.cs" CanonicalName="Sheet6" PublishedHash="C1C6D8D7F50F3F91A137354B658064F78F206F8C" DisplayName="9P" Blueprint="P9.Designer.xml" GeneratedCode="P9.Designer.cs" />
+          <HostItem Name="ThisWorkbook" Code="ThisWorkbook.cs" CanonicalName="ThisWorkbook" PublishedHash="E1D04A3A2754D97802B0F56794339E1ACD513420" Blueprint="ThisWorkbook.Designer.xml" GeneratedCode="ThisWorkbook.Designer.cs" />
+        </Host>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!--
+    To modify your build process, add your task inside one of the targets below and uncomment it.
+    Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

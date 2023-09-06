@@ -1,0 +1,241 @@
+﻿<Window x:Class="KMIQ.Form.frmPrint"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            mc:Ignorable="d" 
+            Height="700" Width="720" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None">
+
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="CustomButtonStyle">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF2778BB" Offset="0.51"/>
+                        <GradientStop Color="#FF2683C5" Offset="0.484"/>
+                        <GradientStop Color="#FF8CD4FF" Offset="1"/>
+                        <GradientStop Color="#FF1973AE" Offset="0.497"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderBrush" Value="#FF2B5F91"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinWidth" Value="20"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Stroke="{TemplateBinding BorderBrush}" RadiusX="5" RadiusY="5" Fill="{TemplateBinding Background}"/>
+                            <Rectangle VerticalAlignment="Top" Height="10" Margin="4,2,4,1" RadiusX="5" RadiusY="5">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#11FFFFFF" Offset="1"/>
+                                        <GradientStop Color="#B2FFFFFF" Offset="0"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle x:Name="rectangle" RadiusX="5" RadiusY="5" Fill="White" Margin="1" Opacity="0"/>
+                            <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False" Margin="{TemplateBinding Padding}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" TargetName="rectangle" Value="0.2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Opacity" TargetName="rectangle" Value="0.3"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Fill" TargetName="rectangle" Value="#666"/>
+                                <Setter Property="Opacity" TargetName="rectangle" Value="0.6"/>
+                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Margin="10" x:Name="Body" CornerRadius="5">
+        <Border.Effect>
+            <DropShadowEffect  BlurRadius="10" ShadowDepth="3" Opacity="1" Color="Black" Direction="270" RenderingBias="Quality" />
+        </Border.Effect>
+        <Border.Background>
+            <ImageBrush ImageSource="/KMIQ;component/Resources/bg.jpg" Stretch="UniformToFill"/>
+        </Border.Background>
+
+
+        <Grid x:Name="Borders" Background="Transparent" Margin="8,0,8,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Source="/KMIQ;component/Resources/print_title.png" Stretch="None" HorizontalAlignment="Left" Margin="10,0" VerticalAlignment="Center"></Image>
+                <DockPanel Grid.Column="1">
+                    <Image Source="/KMIQ;component/Resources/print_close.png" Stretch="None" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="5,0" Cursor="Hand" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
+                    <Image Source="/KMIQ;component/Resources/print_logo.png" Stretch="None" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0"></Image>
+                </DockPanel>
+            </Grid>
+
+            <Border x:Name="TitleArea" Grid.Row="0" Grid.RowSpan="2" Background="Transparent" Margin="0,0,60,0"></Border>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                <Border CornerRadius="8" Background="White" Grid.Column="0" Height="270" Margin="20,0,10,0" VerticalAlignment="Top">
+                    <Border.Effect>
+                        <DropShadowEffect  BlurRadius="20" ShadowDepth="8" Opacity="1" Color="Black" Direction="315" RenderingBias="Quality" />
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Rectangle Grid.Row="0" VerticalAlignment="Stretch" RadiusX="8" RadiusY="8">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFC0DD9A" Offset="0"/>
+                                    <GradientStop Color="#FF008a80" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+                        <TextBlock Grid.Row="0" VerticalAlignment="Center" Margin="10" FontSize="24" FontFamily="Tahoma" Foreground="White" Text="Select Report">
+                            <TextBlock.Effect>
+                                <DropShadowEffect  BlurRadius="10" ShadowDepth="4" Opacity="1" Color="Black" Direction="315" RenderingBias="Quality" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+                        <CheckBox x:Name="chk_All_Report" Grid.Row="1" Content="All Select" Margin="10" FontWeight="Bold" Click="chk_All_Report_Click" IsThreeState="False"></CheckBox>
+                        <DataGrid x:Name="dg_Report" Grid.Row="1" Margin="10,36,10,9" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" CanUserResizeRows="False" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" MouseLeftButtonUp="dg_Report_MouseLeftButtonUp">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="32" CanUserSort="False" CanUserReorder="False" CanUserResize="False"  >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Rpt_CheckBox_Click" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Binding="{Binding Path=ReportType}"  CanUserSort="False" CanUserResize="False" Header="Report type" Width="*" IsReadOnly="True" />
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Column="0" Margin="20,0,10,20" VerticalAlignment="Bottom">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="120" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="18*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Center">
+                                <CheckBox x:Name="chk_PDF" Content="Save to PDF" Margin="10,3" FontWeight="Bold" Foreground="White" Checked="chk_PDF_Checked"/>
+                                <CheckBox x:Name="chk_Excel" Content="Save to Excel" Margin="10,3" FontWeight="Bold" Foreground="White" Checked="chk_Excel_Checked"/>
+                                <GroupBox Margin="5,0,5,2" Header="Copies" Foreground="White" FontSize="11" >
+                                    <ComboBox x:Name="cb_Copies" Margin="8,3" Height="20" IsEditable="True" ItemsSource="{Binding}" IsReadOnly="True"></ComboBox>
+                                </GroupBox>
+                            </StackPanel>
+                            <Button x:Name="btn_PrintSetup" Grid.Column="1" Grid.Row="0" Margin="5,5,5,0" Style="{StaticResource CustomButtonStyle}" Content="Print Setup" Click="btn_PrintSetup_Click"></Button>
+                            <Button x:Name="btn_Print" Grid.Column="1" Grid.Row="1" Margin="5,0,5,5" VerticalAlignment="Stretch" Height="60" Style="{StaticResource CustomButtonStyle}" Content="Print" Click="btn_Print_Click"></Button>
+                        </Grid>
+                    </Grid>
+                    <ProgressBar x:Name="progress" Grid.Row="2" Value="50"></ProgressBar>
+                    <TextBlock x:Name="status" Grid.Row="2" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0" />
+                </Grid>
+
+
+                <Border CornerRadius="8" Background="White" Grid.Column="1" Margin="10,0,20,20" VerticalAlignment="Stretch">
+                    <Border.Effect>
+                        <DropShadowEffect  BlurRadius="20" ShadowDepth="8" Opacity="1" Color="Black" Direction="315" RenderingBias="Quality" />
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="0" />
+                        </Grid.RowDefinitions>
+                        <Rectangle VerticalAlignment="Stretch" RadiusX="8" RadiusY="8">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFa0d5bf" Offset="0"/>
+                                    <GradientStop Color="#FF007389" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+                        <TextBlock Grid.Row="0" VerticalAlignment="Center" Margin="10" FontSize="24" FontFamily="Tahoma" Foreground="White" Text="Select Personal report">
+                            <TextBlock.Effect>
+                                <DropShadowEffect  BlurRadius="10" ShadowDepth="4" Opacity="1" Color="Black" Direction="315" RenderingBias="Quality" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+                        <DockPanel Grid.Row="1" Margin="10" Height="20" VerticalAlignment="Top" LastChildFill="False">
+                            <CheckBox x:Name="chk_All_Student"  DockPanel.Dock="Left" Content="All Select" FontWeight="Bold" VerticalAlignment="Center" Click="chk_All_Student_Click"></CheckBox>
+                            <TextBox x:Name="tb_Search" DockPanel.Dock="Right" Width="150" TextChanged="tb_Search_TextChanged"></TextBox>
+                        </DockPanel>
+
+                        <DataGrid x:Name="dg_Student" Grid.Row="1" Margin="10,35,10,10" AutoGenerateColumns="False" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="True" GridLinesVisibility="Horizontal" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" RowDetailsVisibilityMode="Collapsed" HorizontalGridLinesBrush="#FF597291" MouseLeftButtonUp="dg_Student_MouseLeftButtonUp">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="32" CanUserSort="False" CanUserReorder="False" CanUserResize="False"  >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Stu_CheckBox_Click" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Binding="{Binding No}" CanUserSort="True" CanUserResize="False" Header="No" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding 성명}" CanUserSort="True" CanUserResize="False" Header="성명" Width="120" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding 생년월일}" CanUserSort="True" CanUserResize="False" Header="생년월일" Width="120" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                        <DockPanel Grid.Row="2" Margin="10,0" VerticalAlignment="Top" LastChildFill="False" Visibility="Collapsed">
+                            <TextBlock Text="Select page : " FontWeight="Bold"></TextBlock>
+                            <CheckBox x:Name="chk_personal_1"  DockPanel.Dock="Left" Content="1P" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="True" Margin="10,0"></CheckBox>
+                            <CheckBox x:Name="chk_personal_2"  DockPanel.Dock="Left" Content="2,3P" VerticalAlignment="Bottom" IsEnabled="True" IsChecked="True" Margin="10,0"></CheckBox>
+                            <CheckBox x:Name="chk_personal_4"  DockPanel.Dock="Left" Content="4P" VerticalAlignment="Bottom" IsEnabled="True" IsChecked="True" Margin="10,0"></CheckBox>
+                        </DockPanel>
+
+                    </Grid>
+                </Border>
+
+
+            </Grid>
+
+
+        </Grid>
+
+    </Border>
+
+</Window>

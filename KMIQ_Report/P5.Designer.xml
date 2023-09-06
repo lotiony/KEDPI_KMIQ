@@ -1,0 +1,4 @@
+﻿<hostitem:hostItem hostitem:baseType="Microsoft.Office.Tools.Excel.WorksheetBase" hostitem:namespace="KMIQ" hostitem:className="Sheet2" hostitem:identifier="P5" hostitem:primaryCookie="Sheet2" hostitem:factoryType="Microsoft.Office.Tools.Excel.Factory" hostitem:startupIndex="5" xmlns:hostitem="http://schemas.microsoft.com/2004/VisualStudio/Tools/Applications/HostItem.xsd">
+  <hostitem:hostControl hostitem:name="Object 3" hostitem:identifier="Object_3" hostitem:type="Microsoft.Office.Tools.Excel.Chart" hostitem:primaryCookie="Sheet2:Object 3" hostitem:extenderCookie="" hostitem:modifier="Internal" />
+  <hostitem:hostControl hostitem:name="Sheet2!Print_Area" hostitem:identifier="Sheet2_Print_Area" hostitem:type="Microsoft.Office.Tools.Excel.NamedRange" hostitem:primaryCookie="Sheet2!Print_Area" hostitem:extenderCookie="" hostitem:modifier="Internal" />
+</hostitem:hostItem>

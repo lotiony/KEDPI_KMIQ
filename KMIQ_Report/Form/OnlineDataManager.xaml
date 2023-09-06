@@ -1,0 +1,248 @@
+﻿<Window x:Class="KMIQ.Form.OnlineDataManager"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            mc:Ignorable="d" 
+            Title="온라인 데이터 관리" Height="768" Width="1124" ShowInTaskbar="True"
+            WindowStartupLocation="CenterOwner" Background="Transparent"  AllowsTransparency="True" WindowStyle="None">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/DefaultResource;component/CommonDict.xaml" />
+                <ResourceDictionary Source="/DefaultResource;component/TabControl.xaml"/>
+                <ResourceDictionary Source="/DefaultResource;component/ProgressControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border Margin="10"  x:Name="Body" CornerRadius="5">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="3" Opacity="1" Color="Black" Direction="270" RenderingBias="Quality" />
+        </Border.Effect>
+
+        <Grid x:Name="Borders" Background="Transparent" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="4" />
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="LayoutRoot" Grid.Row="1" Grid.Column="1" Margin="0"  Background="{DynamicResource LeftMenuBackground}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="58" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border x:Name="TitleArea" Width="Auto"  Background="{DynamicResource TopLineBackgroundPatternBrush}" BorderBrush="#99000000" BorderThickness="0,0,0,4" >
+                    
+                </Border>
+
+
+                <Button x:Name="btnRefreshData" Content="Button" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Margin="15" Width="25" Height="25" Style="{DynamicResource CloseButtonStyle}" Click="Button_Click" />
+
+                <Grid Margin="10,5" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="30">
+                    <DockPanel LastChildFill="False">
+
+                        <Button x:Name="RefreshButton" HorizontalAlignment="Left" Padding="5,-2,5,0" Margin="0,3" Content="🔁" FontSize="18px"  Foreground="Green" Width="30" BorderThickness="1" Style="{DynamicResource CTypeBtnStyle}" Click="RefreshButton_Click"/>
+
+                        <Grid Margin="0" DockPanel.Dock="Right">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="아이디/이름" Margin="3" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Style="{DynamicResource ContentsLableStyle1}" FontWeight="Bold" />
+                            <TextBox x:Name="tbSearch" Grid.Column="1" Grid.Row="0" Margin="3" Height="23" Width="200" Style="{DynamicResource DefaultTextBoxStyle}" FontSize="11" TextChanged="tbSearch_TextChanged" />
+                        </Grid>
+
+                        <Grid Margin="0" DockPanel.Dock="Right">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="연도" Margin="3" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Style="{DynamicResource ContentsLableStyle1}" FontWeight="Bold" />
+                            <ComboBox x:Name="cbYear" Grid.Column="1" Margin="3" Grid.Row="0" VerticalContentAlignment="Center" ItemsSource="{Binding}" DockPanel.Dock="Left" MinWidth="80" SelectionChanged="cbYear_SelectionChanged" >
+                                
+                            </ComboBox>
+                        </Grid>
+                    </DockPanel>
+                </Grid>
+
+                <!--GDViewer Winform control hosting with WindowsFormHostOverlay-->
+                <Border Margin="10,35,10,5" Grid.Row="1" Grid.Column="0" Grid.RowSpan="1"  BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Effect="{DynamicResource DefaultDropShadowEffect}" Background="White" />
+                
+                <DataGrid x:Name="OnlineDataList" Margin="12,37,12,7" Grid.Row="1" Grid.Column="0" BorderThickness="0" Background="White" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" RowHeight="23" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="Transparent" SelectionUnit="FullRow" SelectedItem="{Binding SelectedOnlineDataItem}" SelectedIndex="{Binding SelectedOnlineDataIndex, Mode=TwoWay}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" Effect="{x:Null}" RowHeaderWidth="0" IsReadOnly="True" FontSize="11"  MouseLeftButtonUp="OnlineDataList_MouseLeftButtonUp">
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="38" CanUserSort="False" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource DefaultCheckBoxStyle}" Background="{DynamicResource ControlFillNormal}" Click="cbCheck_Click"  />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="User ID" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding UID}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="성명" Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NAME}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="연락처" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TEL}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="이메일" Width="140">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding EMAIL}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="진단구분" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TYPE_GRADE}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="진단일자" Width="140">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DSP_DT}"  HorizontalAlignment="Center" TextOptions.TextFormattingMode="Display" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="리포트고유키" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TOKEN}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="리포트발행" Width="70">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DSP_PUB}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
+                        <DataGridTemplateColumn Header="웹갱신" Width="70">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DSP_UPDATE}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+                        <!--<DataGridTemplateColumn Header="관리" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0" Content="삭제" HorizontalAlignment="Stretch" Command = "{Binding Path=DataContext.UploadAnswerCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}" Style="{DynamicResource CTypeBtnStyle}" />
+                                        <Button Grid.Column="1" Content="메시지" HorizontalAlignment="Stretch" Command = "{Binding Path=DataContext.RemoveAnswerCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}" Style="{DynamicResource CTypeBtnStyle}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <CheckBox x:Name="cbxAll" Content="" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="21, 38, 0, 0" Grid.Row="1" Grid.Column="0" IsThreeState="False"  Style="{DynamicResource DefaultCheckBoxStyle}" Background="{DynamicResource ControlFillNormal}" Click="cbxAll_Click" />
+                
+                <!--GDViewer Winform control hosting with WindowsFormHostOverlay-->
+
+                <TabControl Margin="10,5,10,5" Grid.Row="2" Grid.Column="0" Style="{DynamicResource TabControlStyle}" FontSize="11">
+                    <TabItem Header="리포트 자동 발행 및 게시"  Style="{DynamicResource TabItemStyle}" Padding="12,2">
+
+                        <Grid Margin="3" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="105" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="125" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="동작 상태" Margin="3" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Style="{DynamicResource ContentsLableStyle1}" FontWeight="Bold" />
+
+                            <TextBlock x:Name="AutoPublishStatusText" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0" Margin="10,3" />
+
+                            <Button x:Name="btnAutoPublish" Content="자동발행 시작" Margin="5" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Command="{Binding AutoPublishCommand}" Style="{DynamicResource CTypeBtnStyle}" Click="btnAutoPublish_Click" />
+
+                        </Grid>
+
+
+                    </TabItem>
+                </TabControl>
+
+                <TabControl Margin="10,5,10,10" Grid.Row="3" Grid.Column="0" Style="{DynamicResource TabControlStyle}" FontSize="11">
+                    <TabItem Header="선택항목 리포트 발행"  Style="{DynamicResource TabItemStyle}" Padding="12,2">
+
+                        <Grid Margin="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="105" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="125" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="진행 상태" Margin="3,2" Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Style="{DynamicResource ContentsLableStyle2}" FontWeight="Bold" />
+                            <ProgressBar x:Name="progress" Grid.Column="1" Margin="5" Style="{DynamicResource ProgressBarStyle}" />
+                            <Label x:Name="status" Grid.Column="1" HorizontalAlignment="Left" Margin="5" Grid.Row="3" VerticalContentAlignment="Center" />
+                            <Button x:Name="btnStart" Margin="3" Grid.Column="2" Grid.Row="1" Style="{DynamicResource CTypeBtnStyle}" Click="btnStart_Click" />
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+
+            </Grid>
+
+            <Rectangle Name="topLeft" Fill="Transparent" />
+            <Rectangle Name="top" Fill="Transparent" Grid.Column="1" />
+            <Rectangle Name="topRight" Fill="Transparent" Grid.Column="2" />
+            <Rectangle Name="right" Fill="Transparent" Grid.Row="1" Grid.Column="2" />
+            <Rectangle Name="bottomRight" Fill="Transparent" Grid.Row="2" Grid.Column="2" />
+            <Rectangle Name="bottom" Fill="Transparent" Grid.Row="2" Grid.Column="1" />
+            <Rectangle Name="bottomLeft" Fill="Transparent" Grid.Row="2" />
+            <Rectangle Name="left" Fill="Transparent" Grid.Row="1" />
+        </Grid>
+    </Border>
+</Window>

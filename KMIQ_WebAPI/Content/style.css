@@ -1,0 +1,226 @@
+﻿@charset "utf-8"; 
+
+/* font: 나눔바른고딕 UltraLight 200 , Light 300, Regular 400, Bold 700  */
+@font-face {
+	font-family: "ng_regular"; /*NanumBarunGothic_Regular; */
+	src:url(../Content/fonts/NanumGothic.eot); /* IE9 Compat Modes */
+	src:url(../Content/fonts/NanumGothic.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
+		url(../Content/fonts/NanumGothic.woff) format('woff'), /* Modern Browsers */
+		url(../Content/fonts/NanumGothic.ttf)  format('truetype'); /* Safari, Android, iOS  */	 
+	font-weight:normal;
+}
+
+@font-face {
+	font-family: "ng_bold";  /*NanumBarunGothic_Bold;*/
+	src:url(../Content/fonts/NanumGothicBold.eot); /* IE9 Compat Modes */
+	src:url(../Content/fonts/NanumGothicBold.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
+		url(../Content/fonts/NanumGothicBold.woff) format('woff'), /* Modern Browsers */
+		url(../Content/fonts/NanumGothicBold.ttf)  format('truetype'); /* Safari, Android, iOS */
+	font-weight: 700;  	
+	/*font-weight:normal;*/
+}
+
+
+
+
+/* Basic Style START */
+html, body { height:100%; -webkit-text-size-adjust:none; }
+body, input, select, button, textarea, h1, h2, h3, h4, h5, h6, table {  font:normal 12px/1.5 ng_regular, Nanum Gothic,nanumGothic, sans-serif,Arial,AppleGothic,Sans-serif; color:#666; }
+html, body, div, form, input, select, button, textarea, legend, fieldset, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, blockquote, address, p, th, td, caption { margin:0; padding:0; }
+ol, ul, li { list-style:none; }
+img, fieldset { border:0 none; }
+input, select, textarea { vertical-align:middle; resize:none; position:relative; }
+input, textarea { -webkit-appearance:none; -webkit-border-radius:0; border-radius:0; box-shadow:0 !important;  }
+input[type="checkbox"] { -webkit-appearance:checkbox; }
+input[type="radio"] { -webkit-appearance:radio; -webkit-border-radius:10px; }
+button { border:0 none; background:transparent; cursor:pointer; }
+hr { display:none; }
+legend, .hide { width:0; height:0; visibility:hidden; font-size:0; line-height:0; position:absolute; top:0; left:0; overflow:hidden; }
+table caption { width:0; height:0; visibility:hidden; text-indent:-9999px; font-size:0; line-height:0; }
+table { border-collapse:collapse; border-spacing:0; }
+header, footer, section, article, aside, nav, hgroup, details, menu, figure, figcaption { display:block; }
+a:link, a:visited, a:active, a:hover, a:focus { text-decoration:none; color:#666; }
+a:hover, a:focus { text-decoration:none !important; outline:none !important; }
+label {cursor:pointer;  }
+img { vertical-align:middle; }
+
+/*layout*/
+#wrap{/* height:100%; */}
+#header{ background: #eef6fc;}
+#content{  background: #f7f7f7;  height: inherit;}
+#footer{}
+.basic #header{background:#FAFBEC}
+.basic .tab ul li{width:50%}
+
+
+/*header_wrap*/
+.header_wrap{}
+.header_wrap h1.logo{text-align: center;height: 40px;padding-top: 10px;border-bottom: 2px solid #4C6D8C;}
+.header_wrap h1.logo img{width: 50px;}
+.header_wrap .title{padding: 10px;background: #f7f7f7;padding-bottom: 20px;}
+.header_wrap h2{color: #4C6D8C;font-family: ng_bold;font-size: 1.6em;text-align: center;margin-bottom: 10px;}
+.header_wrap span{}
+
+
+
+.tab{position: relative;height: 40px;}
+.tab ul{overflow: hidden;background: #fff;position: absolute;width: 100%;z-index: 2;left: 0;}
+.tab ul li{float: left;display: inline-block;width: 25%;background: #ccc;text-align: center;box-sizing: border-box;height: 40px;line-height: 40px;}
+.tab ul li a{font-weight: bold;font-family: ng_bold;text-align: center;display: block;}
+.tab ul li.on {background: #fff;border-bottom-color: #fff;color: #000;border-top: 1px solid #ccc;}
+.tab ul li.on a{background: #fff;border-bottom-color: #fff;color: #000;}
+.tab:after{content:"";height: 1px;width: 100%;background: #ccc;display: block;position: absolute;bottom: 2px;}
+
+
+.tab_list{padding: 20px 10px; display:none;}
+.tab_list.on{display:block;}
+.tab_list h3{display:none;}
+.tab_list h4{border-bottom: 2px solid #A8A9AD;color: #666;font-size: 1.2em;font-family: ng_bold;margin-bottom: 10px;}
+.tab_list h4 img{width: 35px;margin-right: 5px;}
+.tab_one h4{}
+.tab_two h4{
+    color: #8882BD;
+    border-bottom-color: #8882BD;
+}
+.tab_three h4{
+    color: #C17000;
+    border-bottom-color: #FBB14A;
+}
+.tab_four h4{
+    color: #3E95D1;
+    border-bottom-color: #3E95D1;
+}
+
+section{margin-bottom:50px;}
+section .desc{text-align: left;margin-top: 10px;border: 0;}
+section .desc label{display:block; background:#636250; color:#fff; padding:5px; width:100px; border-radius:10px;margin-bottom:5px; text-align:center; }
+
+
+.user_info{}
+.user_info li{line-height: 22px;}
+.user_info li span{font-family: ng_regular;color: #000;}
+.user_info li label{font-family: ng_bold;width: 70px;display: inline-block;text-align: start;font-size: 12px;color: #666;}
+
+.stick_graph{}
+.stick_graph > li{margin-bottom: 30px;}
+.stick_graph .cord{width: 100%;}
+.stick_graph .cord > ul {overflow: auto;width: 100%;}
+.stick_graph .cord > ul li{float: left;width: 20%;text-align: right;}
+.stick_graph .graph{background: #eef6fc;width: 100%;height: 20px;position: relative;}
+.stick_graph .graph div{position: absolute;left: 0;background: #4A6B8A;height: 20px;}
+.stick_graph .graph_m .graph div{background: #259DD7;}
+.stick_graph .graph_r .graph div{background: #165CAB;}
+.stick_graph .graph_n .graph div{background: #878D36;}
+.stick_graph .graph_h .graph div{background: #D6B444;}
+.stick_graph .graph_a .graph div{background: #F4991F;}
+.stick_graph .graph_l .graph div{background: #EB5624;}
+.stick_graph .graph_s .graph div{background: #902683;}
+.stick_graph .graph_o .graph div{background: #A55FA4;}
+.stick_graph .graph_c .graph div{background: #E4087F;}
+.stick_graph .desc{text-align: center;}
+.stick_graph .desc span{font-family: ng_bold;color:#000;margin-left: 6px;}
+.stick_graph .desc img{width: 20px;}
+
+.circle_graph{border:1px solid #ccc;min-height:200px;box-sizing: border-box;}
+
+
+
+
+#pagination{display:none;}
+
+
+
+
+
+
+@media all and (min-width:600px) {
+	body{background:#f7f7f7;}
+	#header{ border-bottom:2px solid #4C6D8C;}
+	.tab{display:none;}
+	
+	.header_wrap,.content_wrap{width:1100px;margin:0 auto;position: relative;}
+	.header_wrap{height: 220px;}
+	
+	.header_wrap h1.logo{text-align: center;padding-top: 10px;border-bottom: 0;position: absolute;top: 50px;height: auto;left: 170px;}
+	.header_wrap h1.logo img{width: 120px;}
+	.header_wrap .title{padding: 10px;background: none;padding-bottom: 20px;position: absolute;top: 48px;left: 300px;}
+	.header_wrap h2{color: #4C6D8C;font-family: ng_bold;font-size: 3.6em;text-align: left;margin-bottom: 0;}
+	.header_wrap span{font-size: 14px;}
+
+	.user_info {overflow:auto;}
+	.user_info li { float:left; width:50%; }
+	.user_info li label {font-size: 14px;line-height: 30px;width: 120px;}
+	.user_info li span {font-size: 15px;}
+	
+	section{    overflow: auto;}
+	section .circle_graph{    width: 500px;    float: left;    margin-right: 20px;}
+	section .circle_graph.desc{border:0;float: left;width: 560px;margin: 0;}
+	section .desc{font-size:1.2em;line-height: 23px; }
+	
+	.stick_graph{    width: 84%;    float: right;}
+	.stick_graph > li{margin-bottom: 30px;position: relative;}
+	.stick_graph .cord{/* width: 50%; */}
+	.stick_graph .cord > ul {overflow: auto;width: 100%;}
+	.stick_graph .cord > ul li{float: left;width: 20%;text-align: right;}
+	.stick_graph .graph{background: #eef6fc;/* width: 50%; */height: 20px;position: relative;}
+	.stick_graph .graph div{position: absolute;left: 0;background: #4A6B8A;height: 20px;}
+	.stick_graph .desc {    position: absolute;    top: 9px;    left: -19%;}
+	.tab_list h3{display:block;width: 100%;font-size: 34px;color: #252525;letter-spacing: -1px;font-family: ng_bold;margin-bottom: 30px;}
+	
+	#pagination{display:block; margin:30px 0;}
+	#pagination ul{height:53px; width:170px; margin:0 auto;}
+	#pagination ul li{  cursor:pointer;  float: left;    border: 1px solid #ccc;    width: 30px;    height: 30px;    text-align: center;    vertical-align: middle;    line-height: 26px;    background: #fff;    margin-top: 10px;    margin-left: 10px;}
+	#pagination ul li.on{background:#00b0f0;color:#fff;  } 
+	#pagination ul li:first-child{margin-left:0}
+	.basic #pagination ul{width:76px}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
