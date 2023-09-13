@@ -12,7 +12,7 @@ namespace KMIQ.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -47,8 +47,8 @@ namespace KMIQ.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=db.smartomr.com,1807;Database=KEDPI_KMIQ;User ID=KEDPI_KMIQ;Password=KMIQQ" +
-            "Q_+][ㅠ0=`ㅡb8!Js궳쨽d襒160812!2@6;Connection Timeout=10;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost:1433;Database=KEDPI_KMIQ;User ID=sa;Password=alto2200!;Connectio" +
+            "n Timeout=10;")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

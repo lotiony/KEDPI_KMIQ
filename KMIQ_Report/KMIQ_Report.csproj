@@ -17,7 +17,7 @@
     <NuGetPackageImportStamp>38e1ec84</NuGetPackageImportStamp>
     <AssemblyVersion>1.0.16250.706</AssemblyVersion>
     <SolutionID>659D6419-EE2F-4C98-8BDE-E195A05C75EE</SolutionID>
-    <IsWebBootstrapper>True</IsWebBootstrapper>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -26,9 +26,9 @@
     <VSTO_TrustAssembliesLocation>true</VSTO_TrustAssembliesLocation>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>게시\</PublishUrl>
-    <InstallUrl>http://install.smartomr.com/smartreport/kmiq/</InstallUrl>
+    <InstallUrl />
     <TargetCulture>ko</TargetCulture>
-    <ApplicationVersion>1.0.18214.727</ApplicationVersion>
+    <ApplicationVersion>1.0.18214.729</ApplicationVersion>
     <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -65,11 +65,6 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="RealSMART_USB_Authorize_Files">
-      <Visible>False</Visible>
-      <ProductName>RealSMART USB Authorize</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <PropertyGroup>
     <VSTO_EmbedTypeLibraryInAssembly>false</VSTO_EmbedTypeLibraryInAssembly>
@@ -82,7 +77,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -103,9 +98,6 @@
     <Reference Include="DefaultResource">
       <HintPath>..\..\DefaultResource.dll</HintPath>
     </Reference>
-    <Reference Include="loAuthCheck">
-      <HintPath>..\..\loAuthCheck.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -123,13 +115,19 @@
     <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -142,13 +140,20 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="VSTOInstaller">
-      <HintPath>..\..\VSTOInstaller.dll</HintPath>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
     </Reference>
-    <Reference Include="WindowsBase" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="VSTOInstaller, Version=1.2015.12.24, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\source\repos\VSTO_Installer\VSTOInstaller\bin\Debug\VSTOInstaller.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -329,6 +334,8 @@
       <DependentUpon>ThisWorkbook.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="WebApi.cs" />
+    <Content Include="Deploy\New 다중지능검사 결과분석리포트.xlsx" />
+    <None Include="KMIQ_Report_TemporaryKey.pfx" />
     <None Include="P18.Designer.xml">
       <DependentUpon>P18.cs</DependentUpon>
     </None>
@@ -347,6 +354,22 @@
     <None Include="P23.Designer.xml">
       <DependentUpon>P23.cs</DependentUpon>
     </None>
+    <Content Include="Deploy\SystemFiles\B.png" />
+    <Content Include="Deploy\SystemFiles\I.png" />
+    <Content Include="Deploy\SystemFiles\L.png" />
+    <Content Include="Deploy\SystemFiles\N.png" />
+    <Content Include="Deploy\SystemFiles\P.png" />
+    <Content Include="Deploy\SystemFiles\Se.png" />
+    <Content Include="Deploy\SystemFiles\So.png" />
+    <Content Include="Deploy\SystemFiles\W.png" />
+    <Content Include="Deploy\SystemFiles\개인내지능.png" />
+    <Content Include="Deploy\SystemFiles\공간지능.png" />
+    <Content Include="Deploy\SystemFiles\논리수학지능.png" />
+    <Content Include="Deploy\SystemFiles\대인지능.png" />
+    <Content Include="Deploy\SystemFiles\신체운동지능.png" />
+    <Content Include="Deploy\SystemFiles\언어지능.png" />
+    <Content Include="Deploy\SystemFiles\음악지능.png" />
+    <Content Include="Deploy\SystemFiles\자연지능.png" />
     <Content Include="SystemFiles\B.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -492,26 +515,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="ADODB">
-      <Guid>{B691E011-1797-432E-907A-4D8C69339129}</Guid>
-      <VersionMajor>6</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="ADOR">
-      <Guid>{00000300-0000-0010-8000-00AA006D2EA4}</Guid>
-      <VersionMajor>6</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\attention_100.png" />
     <None Include="Resources\action_refresh.gif" />
     <Resource Include="Resources\bg.jpg" />
@@ -542,11 +545,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>KMIQ_Report_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>702B9E3A3C3484BC37BC77CD1530BA82DEF6AA7A</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B3A57F07DA6FDB0FFDAD36ADD0C6638938E6171D</ManifestCertificateThumbprint>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" Condition="'$(VSToolsPath)' != ''" />

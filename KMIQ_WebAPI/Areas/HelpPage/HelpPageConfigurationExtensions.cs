@@ -5,9 +5,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Net.Http;
+using KMIQ.Areas.HelpPage.Models;
 using System.Web.Http;
 using System.Web.Http.Description;
-using KMIQ.Areas.HelpPage.Models;
 
 namespace KMIQ.Areas.HelpPage
 {

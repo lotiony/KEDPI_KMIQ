@@ -82,11 +82,11 @@ namespace KMIQ
             Main = new Main();
 
 
-            if (!run_Auth())
-            {
-                Globals.ThisWorkbook.Application.Quit();
-                return;
-            }
+            //if (!run_Auth())
+            //{
+            //    Globals.ThisWorkbook.Application.Quit();
+            //    return;
+            //}
         }
 
         private void beforeReleaseProgram()
@@ -113,85 +113,85 @@ namespace KMIQ
 
         #region auth process
 
-        static bool run_Auth()
-        {
-            if (!loCommon.loFunctions.checkRunningAuthorizer())
-            {
-                ///******인증을 처리한다.   --> 갈무리는 키가 없어도 사용이 가능하다(로그인 처리해서). 단, 판독은 무조건 키가 꼽혀야만 가능하도록 한다.
-                {
-                    if (!loAuthCheck.loAuthCheck.MEGALOCK_Auth.Lock_Check())
-                    {
-                        MessageBox.Show("허용된 USB 인증키가 발견되지 않았습니다." + Environment.NewLine + "프로그램을 실행할 수 없습니다.", "인증 실패 - ⓒRealSMART");
-                        return false;
-                    }
+        //static bool run_Auth()
+        //{
+        //    if (!loCommon.loFunctions.checkRunningAuthorizer())
+        //    {
+        //        ///******인증을 처리한다.   --> 갈무리는 키가 없어도 사용이 가능하다(로그인 처리해서). 단, 판독은 무조건 키가 꼽혀야만 가능하도록 한다.
+        //        {
+        //            if (!loAuthCheck.loAuthCheck.MEGALOCK_Auth.Lock_Check())
+        //            {
+        //                MessageBox.Show("허용된 USB 인증키가 발견되지 않았습니다." + Environment.NewLine + "프로그램을 실행할 수 없습니다.", "인증 실패 - ⓒRealSMART");
+        //                return false;
+        //            }
 
-                    try
-                    {
-                        ///***** DB체크해서 정품인증을 한다.
-                        //System.Threading.Thread th1 = new System.Threading.Thread(_thrd_DBCheck);
-                        //th1.Start();
-                        if (_thrd_DBCheck())
-                        {
-                            return true;
-                            ///***** 아이피인증을 한다.
-                            //return _thrd_IPCheck();
-                        }
+        //            try
+        //            {
+        //                ///***** DB체크해서 정품인증을 한다.
+        //                //System.Threading.Thread th1 = new System.Threading.Thread(_thrd_DBCheck);
+        //                //th1.Start();
+        //                if (_thrd_DBCheck())
+        //                {
+        //                    return true;
+        //                    ///***** 아이피인증을 한다.
+        //                    //return _thrd_IPCheck();
+        //                }
 
-                        //System.Threading.Thread th2 = new System.Threading.Thread(_thrd_IPCheck);
-                        //th2.Start();
+        //                //System.Threading.Thread th2 = new System.Threading.Thread(_thrd_IPCheck);
+        //                //th2.Start();
 
-                        return false;
-                    }
-                    catch
-                    { return false; }
-                }
-            }
-            else
-            {
-                return true;
-            }
-
-
-        }
+        //                return false;
+        //            }
+        //            catch
+        //            { return false; }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
 
 
-        public static bool run_UsbCheck()
-        {
-            if (!loCommon.loFunctions.checkRunningAuthorizer())
-            {
-                ///****** 키가 꼽혀있는지 체크한다.
-                {
-                    if (!loAuthCheck.loAuthCheck.MEGALOCK_Auth.Lock_Check())
-                    {
-                        MessageBox.Show("판독은 USB인증키가 꽂혀있는 상태에서만 사용 가능합니다.", "USB 인증키 찾기 실패 - ⓒRealSMART");
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-            }
-            else
-            {
-                return true;
-            }
-        }
+        //}
 
-        static bool _thrd_DBCheck()
-        {
-            int AuthCount = 0;
-            if (loAuthCheck.loAuthCheck.DB_AUTH.DB_Check(Properties.Settings.Default.AuthID, ref AuthCount) == false)
-                return false;
-            else
-            {
-                return true;
-            }
-        }
-        static bool _thrd_IPCheck()
-        {
-            return loAuthCheck.loAuthCheck.DB_AUTH.IP_Check(Properties.Settings.Default.AuthID);
-        }
+
+        //public static bool run_UsbCheck()
+        //{
+        //    if (!loCommon.loFunctions.checkRunningAuthorizer())
+        //    {
+        //        ///****** 키가 꼽혀있는지 체크한다.
+        //        {
+        //            if (!loAuthCheck.loAuthCheck.MEGALOCK_Auth.Lock_Check())
+        //            {
+        //                MessageBox.Show("판독은 USB인증키가 꽂혀있는 상태에서만 사용 가능합니다.", "USB 인증키 찾기 실패 - ⓒRealSMART");
+        //                return false;
+        //            }
+        //            else
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+
+        //static bool _thrd_DBCheck()
+        //{
+        //    int AuthCount = 0;
+        //    if (loAuthCheck.loAuthCheck.DB_AUTH.DB_Check(Properties.Settings.Default.AuthID, ref AuthCount) == false)
+        //        return false;
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+        //static bool _thrd_IPCheck()
+        //{
+        //    return loAuthCheck.loAuthCheck.DB_AUTH.IP_Check(Properties.Settings.Default.AuthID);
+        //}
 
 
         #endregion

@@ -2,15 +2,15 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KMIQ.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Server=db.smartomr.com,1807;Database=KEDPI_KMIQ;User ID=KEDPI_KMIQ;Password=KMIQQQ_+][ㅠ0=`ㅡb8!Js궳쨽d襒160812!2@6;Connection Timeout=10;&lt;/ConnectionString&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Server=db.smartomr.com,1807;Database=KEDPI_KMIQ;User ID=KEDPI_KMIQ;Password=KMIQQQ_+][ㅠ0=`ㅡb8!Js궳쨽d襒160812!2@6;Connection Timeout=10;</Value>
-    </Setting>
     <Setting Name="ApiHost" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Server=localhost:1433;Database=KEDPI_KMIQ;User ID=sa;Password=alto2200!;Connection Timeout=10;&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Server=localhost:1433;Database=KEDPI_KMIQ;User ID=sa;Password=alto2200!;Connection Timeout=10;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

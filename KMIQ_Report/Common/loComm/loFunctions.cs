@@ -7,7 +7,6 @@ using System.Collections;
 using System.Data;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using ADODB;
 using System.ComponentModel;
 //using Microsoft.Office.Interop.Excel;
 using System.Configuration;
@@ -387,108 +386,6 @@ namespace loCommon
             catch (Exception)
             { }
         }
-
-
-        #region DataTable <-> ADODB.Recordset Convert Functions
-
-        /// *************************************************************************************************************************
-        /// ADODB.Recordset 객체를 System.Data.DataTable 로 변환
-        /// *************************************************************************************************************************
-        public static DataTable ConvertToDataTable(ADODB.Recordset objRS)
-        {
-            System.Data.OleDb.OleDbDataAdapter objDA = new System.Data.OleDb.OleDbDataAdapter();
-            DataTable objDT = new DataTable();
-            objDA.Fill(objDT, objRS);
-            return objDT;
-        }
-
-        /// *************************************************************************************************************************
-        /// System.Data.DataTable를 ADODB.Recordset객체로 변환
-        /// *************************************************************************************************************************
-        public static ADOR.Recordset ConvertToRecordset(DataTable inTable)
-        {
-            ADOR.Recordset result = new ADOR.Recordset();
-            result.CursorLocation = ADOR.CursorLocationEnum.adUseClient;
-
-            ADOR.Fields resultFields = result.Fields;
-            System.Data.DataColumnCollection inColumns = inTable.Columns;
-
-            foreach (DataColumn inColumn in inColumns)
-            {
-                resultFields.Append(inColumn.ColumnName, TranslateType(inColumn.DataType), inColumn.MaxLength, (inColumn.AllowDBNull ? ADOR.FieldAttributeEnum.adFldIsNullable : ADOR.FieldAttributeEnum.adFldUnspecified), null);
-            }
-
-            result.Open(System.Reflection.Missing.Value, System.Reflection.Missing.Value, ADOR.CursorTypeEnum.adOpenStatic, ADOR.LockTypeEnum.adLockOptimistic, 0);
-
-            foreach (DataRow dr in inTable.Rows)
-            {
-                result.AddNew(System.Reflection.Missing.Value, System.Reflection.Missing.Value);
-
-                for (int columnIndex = 0 ; columnIndex <= inColumns.Count - 1 ; columnIndex++)
-                {
-                    resultFields[columnIndex].Value = dr[columnIndex];
-                }
-            }
-
-            result.MoveFirst();
-            return result;
-        }
-
-
-        private static ADOR.DataTypeEnum TranslateType(Type columnType)
-        {
-            switch (columnType.UnderlyingSystemType.ToString())
-            {
-                case "System.Boolean":
-
-                    return ADOR.DataTypeEnum.adBoolean;
-                case "System.Byte":
-
-                    return ADOR.DataTypeEnum.adUnsignedTinyInt;
-                case "System.Char":
-
-                    return ADOR.DataTypeEnum.adChar;
-                case "System.DateTime":
-
-                    return ADOR.DataTypeEnum.adDate;
-                case "System.Decimal":
-
-                    return ADOR.DataTypeEnum.adCurrency;
-                case "System.Double":
-
-                    return ADOR.DataTypeEnum.adDouble;
-                case "System.Int16":
-
-                    return ADOR.DataTypeEnum.adSmallInt;
-                case "System.Int32":
-
-                    return ADOR.DataTypeEnum.adInteger;
-                case "System.Int64":
-
-                    return ADOR.DataTypeEnum.adBigInt;
-                case "System.SByte":
-
-                    return ADOR.DataTypeEnum.adTinyInt;
-                case "System.Single":
-
-                    return ADOR.DataTypeEnum.adSingle;
-                case "System.UInt16":
-
-                    return ADOR.DataTypeEnum.adUnsignedSmallInt;
-                case "System.UInt32":
-
-                    return ADOR.DataTypeEnum.adUnsignedInt;
-                case "System.UInt64":
-
-                    return ADOR.DataTypeEnum.adUnsignedBigInt;
-                default:
-                    return ADOR.DataTypeEnum.adVarChar;
-            }
-        }
-
-        #endregion
-
-
 
 
 
