@@ -10,7 +10,7 @@
     <RootNamespace>KMIQ</RootNamespace>
     <AssemblyName>KMIQ</AssemblyName>
     <VSTO_HostDocumentName>New 다중지능검사 결과분석리포트.xlsx</VSTO_HostDocumentName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <OfficeApplication>Excel</OfficeApplication>
     <ProjectGuid>{C30CBB3C-CC7D-468B-BC80-B99FF70FBE32}</ProjectGuid>
@@ -38,6 +38,7 @@
     <SupportUrl>http://www.smartomr.com</SupportUrl>
     <FriendlyName>New 다중지능검사 결과분석리포트</FriendlyName>
     <OfficeApplicationDescription>New 다중지능검사 결과분석리포트</OfficeApplicationDescription>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -78,6 +79,7 @@
     <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -87,40 +89,57 @@
     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <!--
     This section specifies references for the project.
   -->
   <ItemGroup>
-    <Reference Include="C1.C1Excel.4">
-      <HintPath>..\..\C1.C1Excel.4.dll</HintPath>
+    <Reference Include="C1.C1Excel.4.8, Version=4.8.20232.611, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\packages\C1.C1Excel.4.8.20232.611\lib\net48\C1.C1Excel.4.8.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.C1Zip.4.5.2, Version=4.5.20232.611, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\packages\C1.C1Zip.4.5.20232.611\lib\net452\C1.C1Zip.4.5.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.4.8, Version=4.8.20232.611, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
+      <HintPath>..\packages\C1.Win.4.8.20232.611\lib\net48\C1.Win.4.8.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.Bitmap.4.8, Version=4.8.20232.611, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
+      <HintPath>..\packages\C1.Win.Bitmap.4.8.20232.611\lib\net48\C1.Win.Bitmap.4.8.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1DX.4.8, Version=4.8.20232.611, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
+      <HintPath>..\packages\C1.Win.C1DX.4.8.20232.611\lib\net48\C1.Win.C1DX.4.8.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Zip, Version=2.0.20202.1, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <HintPath>..\packages\C1.Zip.2.0.20202.1\lib\netstandard2.0\C1.Zip.dll</HintPath>
     </Reference>
     <Reference Include="DefaultResource">
       <HintPath>..\..\DefaultResource.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Tools.Excel.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore">
       <Private>True</Private>
@@ -460,6 +479,7 @@
     <None Include="P1.Designer.xml">
       <DependentUpon>P1.cs</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Resources\SMARTOMR_Intro_w.png" />
     <None Include="Resources\ip_icon_04_Info.ico" />
     <None Include="P8.Designer.xml">
